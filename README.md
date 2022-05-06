@@ -1,0 +1,2 @@
+# CornerDetection-Lidar
+To detect corners, we know that there are only four corners in the map, and each is 90 degrees. An easy approach that works well enough for this simple environment is to take 3 points separated by at least a few degrees (for example, from 9 consecutive points, you can take the first, fourth and ninth point). Then calculate the angle between these two points, and if it’s close to 90 degrees, you can assume that it’s a corner.
