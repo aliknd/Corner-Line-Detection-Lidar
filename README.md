@@ -1,4 +1,7 @@
 # CornerDetection-Lidar
+
+![Screenshot](gazebo.png)
+
 To detect corners, we know that there are only four corners in the map, and each is 90 degrees. An easy approach that works well enough for this simple environment is to take 3 points separated by at least a few degrees (for example, from 9 consecutive points, you can take the first, fourth and ninth point). Then calculate the angle between these two points, and if it’s close to 90 degrees, you can assume that it’s a corner.
 
 First we define a function in order to get the angles:
@@ -30,6 +33,7 @@ array_t = []
                     ax.set_title('Original points')
                     plt.show()
 ```
+![Screenshot](corner.png)
 
 To detect lines, a simple approach is to use a polynomial fit of first degree, i.e., a linear fit (https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html) to groups of points (for example, groups of 5 to 10 consecutive points). If two consecutive groups give you a fit that have almost the same parameters, then you can assume that both groups belong to the same line. Continue until you find a group that gives different parameters.
 
@@ -66,3 +70,4 @@ eight_split = np.array_split(points, 45)
             count = count+1
         print("---------------end line")
 ```
+![Screenshot](line.png)
