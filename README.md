@@ -1,13 +1,14 @@
 # CornerDetection-Lidar
 To detect corners, we know that there are only four corners in the map, and each is 90 degrees. An easy approach that works well enough for this simple environment is to take 3 points separated by at least a few degrees (for example, from 9 consecutive points, you can take the first, fourth and ninth point). Then calculate the angle between these two points, and if it’s close to 90 degrees, you can assume that it’s a corner.
 
-Defining a function in order to get the angles:
+First we define a function in order to get the angles:
 
 ```sh
 def getAngle(self, a, b, c):
         ang = math.degrees(math.atan2(c[1]-b[1], c[0]-b[0]) - math.atan2(a[1]-b[1], a[0]-b[0]))
         return ang + 360 if ang < 0 else ang
 ```
+Then for corner detection:
 
 ```sh
 array_t = []
